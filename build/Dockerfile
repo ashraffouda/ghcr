@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM scratch
 ARG version=v1.0.0-rc2
 # this will be downloaded from the repo releases after rmb-relay is released
 # COPY rmb-relay /usr/sbin
