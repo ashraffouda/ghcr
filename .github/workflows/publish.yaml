@@ -46,8 +46,8 @@ jobs:
         run: |
           mkdir -p /tmp/build
           ls
-          cp ./ghcr/build/Dockerfile /tmp/build
-          cp ./ghcr/target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
+          cp ${GITHUB_WORKSPACE}/build/Dockerfile /tmp/build
+          cp ${GITHUB_WORKSPACE}/target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
 
       - name: Build and push Docker image for rmb-relay
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
