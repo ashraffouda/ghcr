@@ -45,8 +45,8 @@ jobs:
       - name: Prepare
         run: |
           mkdir -p /tmp/build
-          cp ${GITHUB_WORKSPACE}/target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
-          cp ${GITHUB_WORKSPACE}/build/Dockerfile /tmp/build
+          cp ${{ github.workspace }}/target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
+          cp {{ github.workspace }}/build/Dockerfile /tmp/build
 
       - name: Build and push Docker image for rmb-relay
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
