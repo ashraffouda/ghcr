@@ -46,7 +46,7 @@ jobs:
         with:
           context: ./build
           build-args: |
-            version=${{ steps.meta.outputs.labels }}
+            version=${{ github.ref }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
