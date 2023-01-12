@@ -25,6 +25,8 @@ jobs:
       packages: write
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -42,20 +44,20 @@ jobs:
         id: tag
         uses: dawidd6/action-get-tag@v1
 
-      # - name: Prepare
-      #   run: |
-      #     mkdir -p /tmp/build
-      #     cp $GITHUB_WORKSPACE/build/Dockerfile /tmp/build
-      #     cp $GITHUB_WORKSPACE/target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
-      - uses: canastro/copy-file-action@master
-        with:
-          source: "build/Dockerfile"
-          target: "/tmp/build/Dockerfile"
+      - name: Prepare
+        run: |
+          mkdir -p /tmp/build
+          cp $GITHUB_WORKSPACE/build/Dockerfile /tmp/build
+          cp $GITHUB_WORKSPACE/target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
+      # - uses: canastro/copy-file-action@master
+      #   with:
+      #     source: "build/Dockerfile"
+      #     target: "/tmp/build/Dockerfile"
 
-      - uses: canastro/copy-file-action@master
-        with:
-          source: "target/x86_64-unknown-linux-musl/release/rmb-relay"
-          target: "/tmp/build/rmb-relay"
+      # - uses: canastro/copy-file-action@master
+      #   with:
+      #     source: "target/x86_64-unknown-linux-musl/release/rmb-relay"
+      #     target: "/tmp/build/rmb-relay"
 
       - name: Build and push Docker image for rmb-relay
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
