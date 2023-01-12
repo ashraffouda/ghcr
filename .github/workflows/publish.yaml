@@ -44,10 +44,15 @@ jobs:
         id: tag
         uses: dawidd6/action-get-tag@v1
 
+     - name: Prepare
+        run: |
+          mkdir -p /tmp/build
+          cp build/{Dockerfile} /tmp/build
+
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          context: ./build
+          context: /tmp/build
           build-args: |
             version=${{steps.tag.outputs.tag}}
           push: true
