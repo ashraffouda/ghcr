@@ -44,11 +44,11 @@ jobs:
         id: tag
         uses: dawidd6/action-get-tag@v1
 
-      - name: Prepare
+      - name: copy build files
         run: |
           mkdir -p /tmp/build
-          cp $GITHUB_WORKSPACE/build/Dockerfile /tmp/build
-          cp $GITHUB_WORKSPACE/target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
+          cp ./build/Dockerfile /tmp/build
+          cp ./target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
       # - uses: canastro/copy-file-action@master
       #   with:
       #     source: "build/Dockerfile"
