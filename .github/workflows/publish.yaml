@@ -45,6 +45,7 @@ jobs:
       - name: Prepare
         run: |
           mkdir -p /tmp/build
+          ls
           cp build/Dockerfile /tmp/build
           cp target/x86_64-unknown-linux-musl/release/rmb-relay /tmp/build
 
