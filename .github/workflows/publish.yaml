@@ -49,7 +49,7 @@ jobs:
         with:
           context: ./build
           build-args: |
-            version=${{ steps.tagName.outputs.version }}
+            version=${{steps.tag.outputs.tag}}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
